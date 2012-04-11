@@ -36,7 +36,7 @@ class Dojo_Model extends CI_Model
 	 * Create a dojo listing
 	 *
 	 */
-	function create($name, $time, $country, $location, $coordinates, $email, $google_group, $twitter, $notes, $eb_id, $need_mentors, $stage, $supporter_image, $user_id){
+	function create($name, $time, $country, $location, $coordinates, $email, $google_group, $GitHub_name, $twitter, $notes, $eb_id, $need_mentors, $stage, $supporter_image, $user_id){
 		if ((strlen($name) > 0) AND !$this->is_name_available($name)) {
 			$this->error = array('dojo_name' => 'Dojo Name is use, pick another');
 		} else {
@@ -49,6 +49,7 @@ class Dojo_Model extends CI_Model
 			'coordinates' => $coordinates,
 			'email' => $email,
 			'google_group' => $google_group,
+			'GitHub_name' => $GitHub_name,
 			'twitter' => $twitter,
 			'notes' => $notes,
 			'eb_id' => $eb_id,
@@ -69,7 +70,7 @@ class Dojo_Model extends CI_Model
 	 * Update existing dojo listing
 	 *
 	 */
-	function update($id, $name, $time, $country, $location, $coordinates, $email, $google_group, $twitter, $notes, $eb_id, $need_mentors, $stage, $supporter_image){
+	function update($id, $name, $time, $country, $location, $coordinates, $email, $google_group, $GitHub_name, $twitter, $notes, $eb_id, $need_mentors, $stage, $supporter_image){
 
 		$dojo_data = $this->get($id);
 
@@ -86,6 +87,7 @@ class Dojo_Model extends CI_Model
 			'coordinates' => $coordinates,
 			'email' => $email,
 			'google_group' => $google_group,
+			'$GitHub_name,'=> $GitHub_name,
 			'twitter' => $twitter,
 			'notes' => $notes,
 			'eb_id' => $eb_id,

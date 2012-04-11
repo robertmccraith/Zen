@@ -8,7 +8,7 @@
     <div id="top-bar">
 		<div class="wrap">
 		    <ul id="menu-top-menu">
-                <li><a href="/"><img src="http://coderdojo.com/wp-content/themes/collective/images/logo.png" height="30" style="margin-top: -3px;"></a></li>
+                <li><a href="http://coderdojo.com/"><img src="http://coderdojo.com/wp-content/themes/collective/images/logo.png" height="30" style="margin-top: -3px;"></a></li><!--changed link to go to coderdojo.com-->
                 <li><a href="/dojo">Dojo List</a></li>
 		<?php if (isset($username)) {
 		       if($user_data->dojo){?>

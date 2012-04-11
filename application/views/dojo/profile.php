@@ -1,5 +1,5 @@
 <?php
-    $_countries = array(
+$_countries = array(
   "" => "Select a Country",
   "GB" => "United Kingdom",
   "US" => "United States",
@@ -242,13 +242,26 @@
   "ZW" => "Zimbabwe"
 );
 
-    $country = $_countries[$dojo_data[0]->country];
+$country = $_countries[$dojo_data[0]->country];
 
 ?>
 <div id="content">
     <div class="wrap">
         <div id="main">
+          <legend>Countries</legend><!--header in content-->
+          
             <legend><b><?=$dojo_data[0]->name; ?></b></legend>
+            <div style="align:right;"<?php if(!$dojo_data[0]->verified){?><<!--moved status to be accross from the dojo title-->
+                <div class="alert"><b>Not verified</b> <a href="http://kata.coderdojo.com/index.php?title=Unverified_Dojo_Listing" target="_blank">Learn more...</a> </div>
+                 <?php } if($dojo_data[0]->stage == 0){?>
+                <div class="alert alert-info"><b>In planning</b></div>
+                <?php } if($dojo_data[0]->stage == 1){?>
+                <div class="alert alert-success"><b>Active</b> Just show up</div>
+                <?php } if($dojo_data[0]->stage == 2){?>
+                <div class="alert alert-info"><b>Register ahead</b></div>
+                <?php } if($dojo_data[0]->stage == 3){?>
+                <div class="alert alert-error"><b>Dojo full sorry</b></div>
+                </div>
             <table class="table" style="margin-left: 30px;">
                 <?php if($dojo_data[0]->time){ ?>
                 <tr>
@@ -278,9 +291,7 @@
             <iframe width="550" height="250" style="margin-left: 37px; frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=<?=$dojo_data[0]->coordinates; ?>&amp;aq=&amp;sll=<?=$dojo_data[0]->coordinates; ?>&amp;sspn=0.002453,0.00618&amp;ie=UTF8&amp;t=h&amp;z=17&amp;ll=<?=$dojo_data[0]->coordinates; ?>&amp;output=embed"></iframe><br /><small><a style="margin-left: 483px;" href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=51.888054,-8.403111&amp;aq=&amp;sll=<?=$dojo_data[0]->coordinates; ?>&amp;sspn=0.002453,0.00618&amp;ie=UTF8&amp;t=h&amp;z=14&amp;ll=51.888054,-8.403111" style="color:#0000FF;text-align:left" >View Larger Map</a></small>
             <? } if($dojo_data[0]->eb_id) { ?>
             <legend>Booking</legend>
-            <div style="width:550px; text-align:left; margin-left: 37px;">
-                <iframe  src="http://www.eventbrite.com/tickets-external?eid=<?=$dojo_data[0]->eb_id; ?>&ref=etckt" frameborder="0" height="224" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
-            </div>
+            
             <? } if($dojo_data[0]->supporter_image) { ?>
             <legend>Dojo Supported By</legend>
             <div>
@@ -290,22 +301,16 @@
         </div><!--#main-->
 
         <div id="sidebar">
-
+          <div style="width:550px; text-align:left; margin-left: 37px;">
+<iframe  src="http://www.eventbrite.com/calendar-widget?eid=<?=$dojo_data[0]->eb_id; ?>&ref=etckt" frameborder="0" height="402" width="195" marginheight="0" marginwidth="0" scrolling="no" allowtransparency="true"></iframe>
+ 
+            </div>
+          <?php if($dojo_data[0] == 1){//checks if status needed
             <div class="widget" id="widget-status">
-                <legend>Status</legend>
-                 <?php if(!$dojo_data[0]->verified){?>
-                <div class="alert"><b>Not verified</b> <a href="http://kata.coderdojo.com/index.php?title=Unverified_Dojo_Listing" target="_blank">Learn more...</a> </div>
-                 <?php } if($dojo_data[0]->stage == 0){?>
-                <div class="alert alert-info"><b>In planning</b></div>
-                <?php } if($dojo_data[0]->stage == 1){?>
-                <div class="alert alert-success"><b>Active</b> Just show up</div>
-                <?php } if($dojo_data[0]->stage == 2){?>
-                <div class="alert alert-info"><b>Register ahead</b></div>
-                <?php } if($dojo_data[0]->stage == 3){?>
-                <div class="alert alert-error"><b>Dojo full sorry</b></div>
-                <?php } if($dojo_data[0]->need_mentors == 1){?>
+                
+                 } if($dojo_data[0]->need_mentors == 1){?>
                 <div class="alert alert-warning"><b>Mentors needed!</b></div>
-                <?php }?>
+                <?php }?>}?>
             </div><!--widget-status-->
 
             <div class="widget" id="widget-contact">

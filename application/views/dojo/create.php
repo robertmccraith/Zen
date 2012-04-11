@@ -293,6 +293,14 @@ $google_group = array(
 	'maxlength'	=> 200,
 	'size'	=> 30,
 );
+//new stuff
+$GitHub = array(
+  'name' =>'GitHub_name',
+  'id' => 'GitHub_name',
+  'value' => set_value('GitHub_name'),
+  'maxlength'=> 200,
+  'size' =>30, 
+  );
 
 $twitter = array(
 	'name'	=> 'twitter',
@@ -382,6 +390,14 @@ $supporter_image = array(
                                 <input type="text" class="input-xlarge" id="google_group" name="google_group" value="<?=$google_group['value'];?>">
                                 <div class="error-text"> <?php echo form_error($google_group['name']); ?><?php echo isset($errors[$google_group['name']])?$errors[$google_group['name']]:''; ?></div>
                                 <p class="help-block">We recommend setting up a Discussion group so people can sign up for latest happenings and news and contribute.</p>
+                            </div>
+                      </div>
+                      <div class="control-group"><!--adds the option to connect a github account to the dojo page-->
+                            <label class="control-label" for="GitHub">GitHub</label>
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="GitHub_name" name="GitHub_name" value="<?=$GitHub_name['value'];?>">
+                                <div class="error-text"> <?php echo form_error($GitHub_name['name']); ?><?php echo isset($errors[$GitHub_name['name']])?$errors[$GitHub_name['name']]:''; ?></div>
+                                <p class="help-block">GitHub can be used to keep all of your attendies up to date with the latest developments in your code.</p>
                             </div>
                       </div>
                       <div class="control-group">
